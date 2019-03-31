@@ -4,15 +4,13 @@ def knapsack(weight,profit,capacity):
     index.sort(key=lambda i:ratio[i],reverse=True)
     orig_profit=0
     for j in index:
-        w=weight[j]
-        p=profit[j]
         if w<capacity and capacity>0:
-            capacity=capacity-w
-            orig_profit=orig_profit+p
+            capacity-=weight[j]
+            orig_profit+=profit[j]
         else:
             break
     if capacity>0:
-        orig_profit=orig_profit+p*(capacity/w)
+        orig_profit+=profit[j]*(capacity/weight[j])
     return orig_profit
 if __name__=='__main__':
     raw_weight=input("enter the  weight")
